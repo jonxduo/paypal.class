@@ -14,15 +14,13 @@ class paypal_button{
 	private $cbt;
 	private $rm;
 	function __construct($email){
-		$setting=$GLOBALS['setting'];
+		$this->sandbox=true;
 		$this->cmd='_xclick';
 		$this->busisness=$email;
 		$this->lc='IT';
 		$this->currency_code='EUR';
 		$this->no_note=0;
 		$this->bn=urlencode('PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest');
-		$this->notify_url=$setting['base_path'].'/ipn.php';
-		$this->return=$setting['base_path'];
 		$this->cbt='Torna a TEST PAYPAL';
 		$this->rm=2;
 	}
@@ -35,12 +33,26 @@ class paypal_button{
 	function set_amount($var){
 		$this->amount=$var;
 	}
-	function get_button($name, $number, $amount){
+	function set_return($url){
+		$this->return=$url;
+	}
+	function set_notify_url($url){
+		$this->notify_url=$url;
+	}
+	function set_sandbox($var){
+		$this->sandbox=false;
+	}
+	function get_button($name, $number, $amount, $title=NULL){
 		$this->set_item_name($name);
 		$this->set_item_number($number);
 		$this->set_amount($amount);
-		$url='https://www.sandbox.paypal.com/cgi-bin/webscr'
-			.'?cmd='.$this->cmd
+		if($title==NULL) $title='Paga ora';
+		if($this->sandbox==true) {
+			$url='https://www.sandbox.paypal.com/cgi-bin/webscr';
+		}else{
+			$url='https://www.paypal.com/cgi-bin/webscr';
+		}
+		$url.='?cmd='.$this->cmd
 			.'&business='.$this->busisness
 			.'&lc='.$this->lc
 			.'&currency_code='.$this->currency_code
@@ -53,7 +65,7 @@ class paypal_button{
 			.'&item_name='.$this->item_name
 			.'&item_number='.$this->item_number
 			.'&amount='.$this->amount;
-		return '<a href="'.$url.'">Paga ora</a>';
+		return '<a href="'.$url.'">'.$title.'</a>';
 	}
 }
 
