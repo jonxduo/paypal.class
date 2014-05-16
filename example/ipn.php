@@ -1,6 +1,5 @@
 <?php
-include('setting.php');
-include('paypal.class.php');
+include('../paypal.class.php');
 if($_GET){
 	$ipn=new paypal_ipn($_GET);
 	$text=serialize($ipn);

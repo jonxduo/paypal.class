@@ -21,7 +21,7 @@ class paypal_button{
 		$this->currency_code='EUR';
 		$this->no_note=0;
 		$this->bn=urlencode('PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest');
-		$this->cbt='Torna a TEST PAYPAL';
+		$this->cbt='Torna al negozio';
 		$this->rm=2;
 	}
 	function set_item_name($var){

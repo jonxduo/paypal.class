@@ -1,6 +1,5 @@
 <?php
-include('setting.php');
-include('paypal.class.php');
+include('../paypal.class.php');
 $pp_bottone=new paypal_bottone($setting['paypal_email']);
 $pay_id=substr(md5(time()), 0, 8);
 $bottone=$pp_bottone->get_bottone('Test Paypal Class', $pay_id, '0.50');
