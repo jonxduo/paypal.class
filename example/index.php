@@ -1,9 +1,9 @@
 <?php
 include('../paypal.class.php');
 
-$pp_btn=new paypal_button('test-store@jxd.it');
-$pp_btn->set_return('http://margheritadiaprile.it/paypalclass/example/');
-$pp_btn->set_notify_url('http://margheritadiaprile.it/paypalclass/example/ipn.php');
+$pp_btn=new paypal_button('...'); // inserire qui la mail o l'id dell'utente paypal del negozio
+$pp_btn->set_return('http://...'); // inserire la url a cui reindirizzare l'utente dopo il pagamento
+$pp_btn->set_notify_url('http://.../example/ipn.php'); // inserire la url a cui mandare le notifiche
 
 $pay_id=substr(md5(time()), 0, 8);
 $bottone=$pp_btn->get_button('Test Paypal Class', $pay_id, '0.50');
@@ -20,9 +20,9 @@ $bottone=$pp_btn->get_button('Test Paypal Class', $pay_id, '0.50');
 			<p>Questa pagina serve per testare la classe di paypal di cui si parla in questo articolo [Link all'articolo su webhouse]</p>
 			<div class="row1">
 				<h2>Prova un nuovo pagamento</h2>
-				<p>La transazione avviene mediante un account sandbox, per cui non verrà effettuato nessun reale pagamento.</p>
-				<p>Per effettuare il pagamento puoi utilizzare l'account sandbox: test-user@jxd.it, la password è: 12345678</p>
-				<p>Il codice identificativo di questo pagamento sarà: <?php echo $pay_id; ?></p>
+				<p>La transazione avviene mediante un account sandbox, per cui non verr&agrave; effettuato nessun reale pagamento.</p>
+				<p>Per effettuare il pagamento puoi utilizzare l'account sandbox: test-user@jxd.it, la password &egrave;: 12345678</p>
+				<p>Il codice identificativo di questo pagamento sar&agrave;:<strong> <?php echo $pay_id; ?></strong></p>
 
 				<div class="paybutton"><?php echo $bottone; ?></div>
 			</div>
