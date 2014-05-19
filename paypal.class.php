@@ -43,6 +43,9 @@ class paypal_button{
 		$this->sandbox=false;
 	}
 	function get_button($name, $number, $amount, $title=NULL){
+		return '<a href="'.$url.'">'.$this->get_url($name, $number, $amount, $title).'</a>';
+	}
+	function get_url($name, $number, $amount, $title=NULL){
 		$this->set_item_name($name);
 		$this->set_item_number($number);
 		$this->set_amount($amount);
@@ -65,7 +68,6 @@ class paypal_button{
 			.'&item_name='.$this->item_name
 			.'&item_number='.$this->item_number
 			.'&amount='.$this->amount;
-		return '<a href="'.$url.'">'.$title.'</a>';
 	}
 }
 
