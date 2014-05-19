@@ -10,9 +10,7 @@ $bottone=$pp_btn->get_button('Test Paypal Class', $pay_id, '0.50');
 ?>
 <html>
 	<head>
-		<style>
-			.wrapper{width:800px; margin:20px auto; background:#efefef; border:1px solid #ddd; padding:20px;}
-		</style>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<div class="wrapper">
