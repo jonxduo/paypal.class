@@ -1,8 +1,12 @@
 <?php
 include('../paypal.class.php');
-$pp_bottone=new paypal_bottone($setting['paypal_email']);
+
+$pp_btn=new paypal_button('test-store@jxd.it');
+$pp_btn->set_return('http://margheritadiaprile.it/paypalclass/example/');
+$pp_btn->set_notify_url('http://margheritadiaprile.it/paypalclass/example/ipn.php');
+
 $pay_id=substr(md5(time()), 0, 8);
-$bottone=$pp_bottone->get_bottone('Test Paypal Class', $pay_id, '0.50');
+$bottone=$pp_btn->get_button('Test Paypal Class', $pay_id, '0.50');
 ?>
 <html>
 	<head>
@@ -17,7 +21,9 @@ $bottone=$pp_bottone->get_bottone('Test Paypal Class', $pay_id, '0.50');
 			<div class="row1">
 				<h2>Prova un nuovo pagamento</h2>
 				<p>La transazione avviene mediante un account sandbox, per cui non verrà effettuato nessun reale pagamento.</p>
+				<p>Per effettuare il pagamento puoi utilizzare l'account sandbox: test-user@jxd.it, la password è: 12345678</p>
 				<p>Il codice identificativo di questo pagamento sarà: <?php echo $pay_id; ?></p>
+
 				<div class="paybutton"><?php echo $bottone; ?></div>
 			</div>
 			<div class="row2">
